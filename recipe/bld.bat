@@ -1,3 +1,5 @@
+set PYTHONDONTWRITEBYTECODE=1
 python setup.py install
 :: Conflicts with jupyter_core which is a transitive dep.
-del /s /q %SP_DIR%\jupyter.py
+cd %SP_DIR%
+del jupyter.py
