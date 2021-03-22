@@ -19,7 +19,7 @@ requirements:
   run:
     - python
     - notebook
-    - qtconsole   # [not ppc64le]
+    - qtconsole   # [not (ppc64le or s390x or aarch64)]
     - jupyter_console
     - nbconvert
     - ipykernel
