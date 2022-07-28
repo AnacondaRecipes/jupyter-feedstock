@@ -1,43 +1,54 @@
+{% set name = "jupyter" %}
 {% set version = "1.0.0" %}
 
 package:
-  name: jupyter
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
   fn: jupyter-{{ version }}.tar.gz
-  url: https://pypi.python.org/packages/source/j/jupyter/jupyter-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: d9dc4b3318f310e34c82951ea5d6683f67bed7def4b259fafbfe4f1beb1d8e5f
 
 build:
-  number: 7
+  number: 8
 
 requirements:
   host:
     - python
     - pip
+    - setuptools
+    - wheel
   run:
     - python
-    - notebook
-    - qtconsole   # [not ppc64le]
-    - jupyter_console
-    - nbconvert
     - ipykernel
     - ipywidgets
+    - jupyter_console
+    # Add jupyterlab to meta package, see https://github.com/jupyter/jupyter/pull/615
+    - jupyterlab
+    - nbconvert
+    - notebook
+    - qtconsole   # [not ppc64le]
 
-test:                  # [not win]
-  commands:            # [not win]
-    - jupyter --help   # [not win]
+test:
+  requires:
+    - pip
+  commands:
+    - pip check || true    # [not win]
+    - pip check || exit 1  # [win]
+    - jupyter --help
+    - jupyter nbextension list
 
 about:
-  home: http://jupyter.org
-  license: BSD 3-Clause
+  home: https://jupyter.org
+  license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE
-  summary: 'Jupyter metapackage. Install all the Jupyter components in one go.'
+  summary: Jupyter metapackage. Install all the Jupyter components in one go.
   description: |
     Jupyter Notebook is a web application, a browser-based tool for interactive authoring of documents
     which combine explanatory text, mathematics, computations and their rich media output.
-  doc_url: http://jupyter.readthedocs.org/
+  doc_url: https://jupyter.readthedocs.org/
   doc_source_url: https://github.com/jupyter/notebook/blob/master/docs/source/index.rst
   dev_url: https://github.com/jupyter/jupyter
 
