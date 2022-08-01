@@ -28,7 +28,7 @@ requirements:
     - jupyterlab
     - nbconvert
     - notebook
-    - qtconsole   # [not ppc64le]
+    - qtconsole   # [not (ppc64le or s390x)]
 
 test:
   requires:
