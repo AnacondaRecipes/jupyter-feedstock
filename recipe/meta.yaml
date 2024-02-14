@@ -38,6 +38,9 @@ test:
     - pip check || exit 1  # [win]
     - jupyter --help
     - jupyter console -h
+    - jupyter lab -h # [not s390x]
+    - jupyter notebook -h # [not s390x]
+    - jupyter qtconsole -h # [not s390x]
 
 about:
   home: https://jupyter.org
