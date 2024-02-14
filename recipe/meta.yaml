@@ -11,7 +11,7 @@ source:
   sha256: d9dc4b3318f310e34c82951ea5d6683f67bed7def4b259fafbfe4f1beb1d8e5f
 
 build:
-  number: 8
+  number: 9
 
 requirements:
   host:
@@ -22,19 +22,19 @@ requirements:
   run:
     - python
     - ipykernel
-    - ipywidgets
+    - ipywidgets # [not s390x]
     - jupyter_console
     # Add jupyterlab to meta package, see https://github.com/jupyter/jupyter/pull/615
-    - jupyterlab
+    - jupyterlab # [not s390x]
     - nbconvert
-    - notebook
-    - qtconsole   # [not (ppc64le or s390x)]
+    - notebook # [not s390x]
+    - qtconsole   # [not s390x]
 
 test:
   requires:
     - pip
   commands:
-    - pip check || true    # [not win]
+    - pip check || true    # [not (win or s390x)]
     - pip check || exit 1  # [win]
     - jupyter --help
     - jupyter nbextension list
