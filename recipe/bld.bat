@@ -1,5 +1,5 @@
 set PYTHONDONTWRITEBYTECODE=1
-pip install --no-deps .
+pip install --no-deps --no-build-isolation .
 :: Conflicts with jupyter_core which is a transitive dep.
 cd %SP_DIR%
 del jupyter.py
