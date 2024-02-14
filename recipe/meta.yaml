@@ -34,7 +34,7 @@ test:
   requires:
     - pip
   commands:
-    - pip check || true    # [not (win or s390x)]
+    - pip check || true    # [s390x]
     - pip check || exit 1  # [win]
     - jupyter --help
     - jupyter console -h
