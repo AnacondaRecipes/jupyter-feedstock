@@ -37,7 +37,7 @@ test:
     - pip check || true    # [not (win or s390x)]
     - pip check || exit 1  # [win]
     - jupyter --help
-    - jupyter nbextension list
+    - jupyter console -h
 
 about:
   home: https://jupyter.org
