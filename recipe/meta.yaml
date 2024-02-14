@@ -35,7 +35,7 @@ test:
     - pip
   commands:
     - pip check || true    # [s390x]
-    - pip check || exit 1  # [win]
+    - pip check
     - jupyter --help
     - jupyter console -h
     - jupyter lab -h # [not s390x]
