@@ -50,7 +50,7 @@ about:
   description: |
     Jupyter Notebook is a web application, a browser-based tool for interactive authoring of documents
     which combine explanatory text, mathematics, computations and their rich media output.
-  doc_url: https://jupyter.readthedocs.org/
+  doc_url: https://docs.jupyter.org
   dev_url: https://github.com/jupyter/jupyter
 
 extra:
