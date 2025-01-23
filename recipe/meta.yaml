@@ -1,5 +1,5 @@
 {% set name = "jupyter" %}
-{% set version = "1.0.0" %}
+{% set version = "1.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,10 +8,10 @@ package:
 source:
   fn: jupyter-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: d9dc4b3318f310e34c82951ea5d6683f67bed7def4b259fafbfe4f1beb1d8e5f
+  sha256: d55467bceabdea49d7e3624af7e33d59c37fff53ed3a350e1ac957bed731de7a
 
 build:
-  number: 9 # trigger
+  number: 0
 
 requirements:
   host:
@@ -22,24 +22,23 @@ requirements:
   run:
     - python
     - ipykernel
-    - ipywidgets # [not s390x]
+    - ipywidgets       # [not s390x]
     - jupyter_console
-    # Add jupyterlab to meta package, see https://github.com/jupyter/jupyter/pull/615
-    - jupyterlab # [not s390x]
+    - jupyterlab       # [not s390x]
     - nbconvert
-    - notebook # [not s390x]
-    - qtconsole   # [not s390x]
+    - notebook         # [not s390x]
+    - qtconsole        # [not s390x]
 
 test:
   requires:
     - pip
   commands:
     - pip check || true    # [s390x]
-    - pip check # [not s390x]
+    - pip check            # [not s390x]
     - jupyter --help
     - jupyter console -h
-    - jupyter lab -h # [not s390x]
-    - jupyter notebook -h # [not s390x]
+    - jupyter lab -h       # [not s390x]
+    - jupyter notebook -h  # [not s390x]
 
 about:
   home: https://jupyter.org
